@@ -23,8 +23,8 @@ public class WhatsappRepository {
         this.senderMap = new HashMap<Message, User>();
         this.adminMap = new HashMap<Group, User>();
         this.userMobile = new HashSet<>();
-        this.customGroupCount = 1;
-        this.messageId = 1;
+        this.customGroupCount = 0;
+        this.messageId = 0;
     }
 
     public String createUser(String name, String mobile) throws Exception {
@@ -55,8 +55,9 @@ public class WhatsappRepository {
     public int createMessage(String content){
         // The 'i^th' created message has message id 'i'.
         // Return the message id.
-        Message msg = new Message(messageId,content);
         messageId++;
+        Message msg = new Message(messageId,content);
+
         return messageId;
     }
 
