@@ -84,7 +84,7 @@ public class WhatsappRepository {
         //Change the admin of the group to "user" and return "SUCCESS". Note that at one time there is only one admin and the
         // admin rights are transferred from approver to user.
         if(!groupUserMap.containsKey(group)) throw new Exception("Group does not exist");
-        if(!adminMap.get(group).equals(approver)) throw new Exception("Approver does not have rights");
+        if(!adminMap.get(group).getName().equals(approver.getName())) throw new Exception("Approver does not have rights");
         if(!groupUserMap.get(group).contains(user)) throw new Exception("User is not a participant");
 
         adminMap.put(group,user);
