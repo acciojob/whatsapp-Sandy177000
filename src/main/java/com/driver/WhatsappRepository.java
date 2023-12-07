@@ -43,7 +43,7 @@ public class WhatsappRepository {
         if(s==2)
              grp = new Group(users.get(1).getName(),users.size());
         else if(s>2)
-            grp = new Group("Group "+groupUserMap.size()+1,users.size());
+            grp = new Group("Group "+customGroupCount,users.size());
 
         User admin = new User(users.get(0).getName(),users.get(0).getMobile());
         adminMap.put(grp,admin);
