@@ -23,8 +23,8 @@ public class WhatsappRepository {
         this.senderMap = new HashMap<Message, User>();
         this.adminMap = new HashMap<Group, User>();
         this.userMobile = new HashSet<>();
-        this.customGroupCount = 0;
-        this.messageId = 0;
+        this.customGroupCount = 1;
+        this.messageId = 1;
     }
 
     public String createUser(String name, String mobile) throws Exception {
@@ -38,13 +38,14 @@ public class WhatsappRepository {
 
     public Group createGroup(List<User> users){
         int s = users.size();
-        customGroupCount++;
         Group grp = new Group();
         if(s==2)
              grp = new Group(users.get(1).getName(),users.size());
         else if(s>2)
             grp = new Group("Group "+customGroupCount,users.size());
 
+
+        customGroupCount++;
         User admin = new User(users.get(0).getName(),users.get(0).getMobile());
         adminMap.put(grp,admin);
         groupUserMap.put(grp,users);
@@ -54,9 +55,8 @@ public class WhatsappRepository {
     public int createMessage(String content){
         // The 'i^th' created message has message id 'i'.
         // Return the message id.
-        messageId++;
         Message msg = new Message(messageId,content);
-
+        messageId++;
         return messageId;
     }
 
